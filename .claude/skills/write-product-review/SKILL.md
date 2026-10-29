@@ -44,6 +44,8 @@ If the user didn't name a product, ask which one (suggest the top `page_status =
 19. **Sources** — numbered list with ids `src-*` matching the citations; last item = official site/policies with access date.
 20. `review-foot` with "How we review" and "Medical disclaimer" paragraphs (copy from the model page), then the TOC `<aside>`, footer and nav script — all copied from the model page.
 
+The shared site pages live at `/about/`, `/affiliate-disclosure/`, `/privacy-policy/`, `/terms/` and `/contact/`. Every review must link to them exactly as the model page does: the top disclosure bar links `../affiliate-disclosure/`, and the footer "About" column links `../about/`, `../affiliate-disclosure/`, `../privacy-policy/`, `../terms/` and `../contact/`. Copying the model page's bar and footer gives you these. Don't create per-review copies of these pages.
+
 ## 4. Tone rules (what the user approved)
 - Warm, positive and helpful; lead with benefits and who it's a good fit for. It should make a reader comfortable buying — but read like an independent review, not an ad: no hype words ("miracle", "revolutionary", "secret"), no fake urgency, no ALL-CAPS, no exclamation marks.
 - **Do not add an in-article disclosure box** (no "We are not paid by…" / "we bought nothing" / "information only" notice at the top of the article). The user removed it from the model page. Keep only what the model page has: the site-wide disclosure bar, the `review-foot` paragraphs and the footer.

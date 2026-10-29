@@ -86,6 +86,12 @@ check('class="notice"' not in s, "no in-article disclosure box")
 hits = [p for p in BANNED if re.search(p, s, re.I)]
 check(not hits, "no banned phrases / hype", ", ".join(hits))
 
+site_pages = ["about", "affiliate-disclosure", "privacy-policy", "terms", "contact"]
+missing_links = [p for p in site_pages if f'href="../{p}/"' not in s]
+check(not missing_links, "links to About, Affiliate disclosure, Privacy, Terms, Contact", ", ".join(missing_links))
+missing_pages = [p for p in site_pages if not (repo / p / "index.html").exists()]
+check(not missing_pages, "site pages exist", ", ".join(missing_pages))
+
 home = (repo / "index.html").read_text(encoding="utf-8")
 check(f'href="{folder}/"' in home, "linked from home page")
 check(f"{SITE}/{folder}/" in home, "in home page JSON-LD ItemList")
