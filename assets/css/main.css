@@ -198,3 +198,85 @@ p { margin: 0 0 1em; }
 .visually-hidden { position: absolute !important; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
 
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } * { transition: none !important; } }
+
+/* ---------- Review pages (/<product>/) ---------- */
+.breadcrumb { font-size: .85rem; color: var(--ink-3); padding: 18px 0 0; }
+.breadcrumb ol { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 6px; }
+.breadcrumb li + li::before { content: "›"; margin-right: 6px; color: var(--ink-3); }
+.breadcrumb a { color: var(--ink-2); text-decoration: none; }
+.breadcrumb a:hover { color: var(--brand); text-decoration: underline; }
+
+.review-head { padding: 22px 0 8px; max-width: 860px; }
+.review-head h1 { font-size: clamp(1.9rem, 4vw, 2.9rem); margin-bottom: .35em; }
+.review-head .dek { font-size: 1.12rem; color: var(--ink-2); }
+.byline { display: flex; flex-wrap: wrap; gap: 6px 18px; font-size: .88rem; color: var(--ink-3); margin: 14px 0 0; padding: 0; list-style: none; }
+.byline strong { color: var(--ink-2); font-weight: 600; }
+
+.review-layout { display: grid; gap: 40px; padding: 20px 0 64px; }
+@media (min-width: 1040px) { .review-layout { grid-template-columns: minmax(0, 1fr) 280px; } }
+.review-body { min-width: 0; max-width: 780px; }
+.review-body h2 { font-size: clamp(1.45rem, 2.6vw, 1.85rem); margin-top: 2.2em; scroll-margin-top: 90px; }
+.review-body h3 { margin-top: 1.6em; }
+.review-body p, .review-body li { color: var(--ink-2); }
+.review-body ul, .review-body ol { padding-left: 22px; }
+.review-body li { margin-bottom: 6px; }
+.review-body strong { color: var(--ink); }
+
+.toc { position: sticky; top: 88px; align-self: start; background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; font-size: .92rem; }
+.toc h2 { font: 700 .75rem/1 var(--sans); letter-spacing: .14em; text-transform: uppercase; color: var(--ink-3); margin: 0 0 12px; }
+.toc ol { margin: 0; padding-left: 18px; display: grid; gap: 6px; }
+.toc a { color: var(--ink-2); text-decoration: none; }
+.toc a:hover { color: var(--brand); text-decoration: underline; }
+@media (max-width: 1039px) { .toc { position: static; order: -1; } }
+
+.verdict { background: var(--surface); border: 1px solid var(--line); border-radius: 18px; box-shadow: var(--shadow); padding: 24px; margin: 8px 0 28px; }
+.verdict-top { display: flex; flex-wrap: wrap; gap: 18px 24px; align-items: center; margin-bottom: 14px; }
+.score { display: grid; place-items: center; width: 96px; height: 96px; border-radius: 50%; background: var(--brand-soft); color: var(--brand-ink); flex: none; text-align: center; }
+.score b { display: block; font: 700 1.9rem/1 var(--serif); }
+.score span { font-size: .72rem; font-weight: 600; letter-spacing: .04em; }
+.verdict-top > div:last-child { flex: 1 1 260px; }
+.verdict h2 { margin: 0 0 4px; font-size: 1.35rem; }
+.verdict-top p { margin: 0; }
+.fit-grid { display: grid; gap: 14px; margin: 16px 0 18px; }
+@media (min-width: 640px) { .fit-grid { grid-template-columns: 1fr 1fr; } }
+.fit { border-radius: var(--radius-sm); padding: 14px 16px; font-size: .93rem; }
+.fit h3 { font: 700 .8rem/1.2 var(--sans); letter-spacing: .08em; text-transform: uppercase; margin: 0 0 8px; }
+.fit ul { margin: 0; padding-left: 18px; }
+.fit-yes { background: var(--brand-soft); }
+.fit-yes h3 { color: var(--brand-ink); }
+.fit-no { background: #fbeeee; }
+.fit-no h3 { color: #8a2c2c; }
+.cta-row { display: flex; flex-wrap: wrap; gap: 10px 16px; align-items: center; }
+.cta-note { font-size: .82rem; color: var(--ink-3); }
+
+.table-wrap { overflow-x: auto; margin: 16px 0 22px; border: 1px solid var(--line); border-radius: var(--radius-sm); background: var(--surface); }
+.data-table { width: 100%; border-collapse: collapse; font-size: .92rem; }
+.data-table caption { text-align: left; padding: 12px 14px 0; font-size: .82rem; color: var(--ink-3); caption-side: bottom; padding-bottom: 12px; }
+.data-table th, .data-table td { text-align: left; padding: 11px 14px; border-bottom: 1px solid var(--line); vertical-align: top; }
+.data-table thead th { background: var(--surface-2); font-size: .8rem; letter-spacing: .04em; text-transform: uppercase; color: var(--ink-2); }
+.data-table tbody th { font-weight: 600; color: var(--ink); width: 34%; }
+.data-table tr:last-child th, .data-table tr:last-child td { border-bottom: 0; }
+.ev { display: inline-block; font-size: .75rem; font-weight: 700; padding: 2px 8px; border-radius: 999px; white-space: nowrap; }
+.ev-mod { background: var(--brand-soft); color: var(--brand-ink); }
+.ev-low { background: var(--accent-soft); color: #7a4a10; }
+.ev-none { background: #f1efe9; color: var(--ink-3); }
+
+.callout { border-left: 4px solid var(--accent); background: var(--accent-soft); border-radius: 0 var(--radius-sm) var(--radius-sm) 0; padding: 14px 18px; margin: 18px 0; font-size: .95rem; }
+.callout p { margin: 0; color: #4e3a17; }
+.callout.info { border-color: var(--brand); background: var(--brand-soft); }
+.callout.info p { color: var(--brand-ink); }
+
+.pros-cons { display: grid; gap: 16px; margin: 16px 0; }
+@media (min-width: 680px) { .pros-cons { grid-template-columns: 1fr 1fr; } }
+.pros-cons > div { background: var(--surface); border: 1px solid var(--line); border-radius: var(--radius); padding: 18px 20px; }
+.pros-cons h3 { margin: 0 0 10px; font-size: 1.05rem; }
+.pros-cons ul { list-style: none; padding: 0; margin: 0; }
+.pros-cons li { position: relative; padding-left: 26px; margin-bottom: 8px; font-size: .94rem; }
+.pros li::before { content: "+"; position: absolute; left: 0; top: -1px; width: 18px; height: 18px; border-radius: 50%; background: var(--brand-soft); color: var(--brand); font-weight: 700; display: grid; place-items: center; font-size: .9rem; }
+.cons li::before { content: "–"; position: absolute; left: 0; top: -1px; width: 18px; height: 18px; border-radius: 50%; background: #fbeeee; color: #8a2c2c; font-weight: 700; display: grid; place-items: center; font-size: .9rem; }
+
+.score-table td:last-child { white-space: nowrap; font-weight: 600; color: var(--ink); }
+.sources { font-size: .88rem; }
+.sources li { margin-bottom: 8px; word-break: break-word; }
+.review-foot { border-top: 1px solid var(--line); margin-top: 36px; padding-top: 18px; font-size: .86rem; color: var(--ink-3); }
+.review-foot p { color: var(--ink-3); }

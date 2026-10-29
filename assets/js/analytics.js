@@ -4,7 +4,7 @@
   GA4 > Reports > Engagement > Pages and screens.
 
   Also sends:
-  - affiliate_click: any link with rel="sponsored" (official-site buttons), with the product and page.
+  - affiliate_click: any official-site button (rel="sponsored" or data-offer), with the product, link type and page.
   - outbound_click is GA4's built-in "Outbound clicks" (Enhanced measurement), so it is not duplicated here.
 */
 (function () {
@@ -26,10 +26,11 @@
   gtag('config', GA_MEASUREMENT_ID);
 
   document.addEventListener('click', function (e) {
-    var a = e.target.closest && e.target.closest('a[rel~="sponsored"]');
+    var a = e.target.closest && e.target.closest('a[rel~="sponsored"], a[data-offer]');
     if (!a) return;
     gtag('event', 'affiliate_click', {
-      product: a.getAttribute('data-product') || '',
+      product: a.getAttribute('data-offer') || a.getAttribute('data-product') || '',
+      link_type: /\bsponsored\b/.test(a.rel) ? 'affiliate' : 'official',
       link_url: a.href,
       page_path: location.pathname,
       transport_type: 'beacon'
