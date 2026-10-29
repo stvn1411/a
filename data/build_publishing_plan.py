@@ -1,4 +1,6 @@
-"""Build data/publishing-plan.csv: which product review goes into which productlist-N branch.
+"""Build data/publishing-plan.csv (one row per product) and data/batches.csv (one row per batch of 3).
+
+Batch N = branch productlist-N. Each batch is worked on by one Claude session, independently (see CLAUDE.md).
 
 Run from the repo root: python3 -I data/build_publishing_plan.py
 Re-run after the shortlist changes; branches already marked done in DONE keep their place only if you
@@ -163,5 +165,23 @@ with open("data/publishing-plan.csv", "w", newline="", encoding="utf-8-sig") as 
     w = csv.DictWriter(f, fieldnames=list(plan[0].keys()))
     w.writeheader()
     w.writerows(plan)
+# One row per batch, so parallel sessions can each take a different batch (claim with data/claim_batch.py).
+batch_rows = []
+for b in range(1, branch_no + 1):
+    items = [p for p in plan if p["branch"] == f"productlist-{b}"]
+    row = {"batch": b, "branch": f"productlist-{b}", "wave": items[0]["wave"],
+           "topics": " / ".join(dict.fromkeys(p["topic"] for p in items))}
+    for i in range(PER_BRANCH):
+        p = items[i] if i < len(items) else None
+        row[f"product_{i + 1}"] = p["product_name"] if p else ""
+        row[f"slug_{i + 1}"] = p["page_slug"] if p else ""
+    row["notes"] = "; ".join(f'{p["product_name"]}: {x}' for p in items
+                             for x in (p["name_check"], p["risk_flag"]) if x)
+    batch_rows.append(row)
+with open("data/batches.csv", "w", newline="", encoding="utf-8-sig") as f:
+    w = csv.DictWriter(f, fieldnames=list(batch_rows[0].keys()))
+    w.writeheader()
+    w.writerows(batch_rows)
+
 print(f"{branch_no} branches, {sum(1 for p in plan if p['status']=='planned')} planned reviews, "
       f"{(branch_no + BRANCHES_PER_WEEK - 1) // BRANCHES_PER_WEEK} weeks")

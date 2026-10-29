@@ -78,6 +78,6 @@ The shared site pages live at `/about/`, `/affiliate-disclosure/`, `/privacy-pol
 
 ## 7. Verify before saying it's done
 1. Run `python3 -I .claude/skills/write-product-review/check_review.py <slug>-review` from the repo root and fix every FAIL. (Use `--wired` only in the monthly common update, when home page and sitemap entries must exist.)
-2. Screenshot the real `file://` URL at 1920px with headless Chrome (isolated `--user-data-dir`).
-3. Check 390px in the browser pane over a local server (`python3 -m http.server 8765 -d <repo>` in the background, open `http://localhost:8765/<slug>-review/`): `document.documentElement.scrollWidth` must equal `innerWidth`; wide tables may scroll inside `.table-wrap`.
+2. Screenshot the real `file://` URL at 1920px with headless Chrome, with its own `--user-data-dir` in this session's scratchpad (never shared with another session). Other sessions may run at the same time, so only stop processes you started.
+3. Check 390px in the browser pane over a local server on a port unique to this batch, 8700 + N for `productlist-N` (`python3 -m http.server <port> -d <this worktree>` in the background, open `http://localhost:<port>/<slug>-review/`): `document.documentElement.scrollWidth` must equal `innerWidth`; wide tables may scroll inside `.table-wrap`.
 4. Report what was checked, prices with the date checked, and anything unverified. Commit and push follow CLAUDE.md: in a `productlist-N` branch, one commit per review and push the branch; otherwise don't commit unless the user asks.
