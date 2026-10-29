@@ -13,51 +13,47 @@ out of date.
 - No `Co-Authored-By` trailer in commit messages and no "Generated with Claude Code" line in PR descriptions.
 - `gh` on this machine is logged in to a different account: don't use it here. The user opens PRs on github.com.
 
-## Publishing plan: 3 reviews per branch, write everything first, merge later
-`data/publishing-plan.csv` is the plan (built by `data/build_publishing_plan.py`; once branches exist, edit the CSV
-by hand instead of re-running it). It puts the 337 planned reviews into `productlist-1` … `productlist-113`, 3 per
-branch, ordered by wave (A high priority → E low priority with risk flag) and grouped by topic so the 3 reviews in a
-branch can link to each other.
+## Publishing plan: 3 reviews per branch, every branch independent
+`data/publishing-plan.csv` is the plan (built by `data/build_publishing_plan.py`). It puts the 337 planned reviews into
+`productlist-1` … `productlist-113`, 3 per branch (only `productlist-113` has 1), ordered by wave (A high priority →
+E low priority with risk flag) and grouped by topic so the 3 reviews in a branch can link to each other.
 
-How we work:
-1. **Write all branches first.** Go through the plan in order: `productlist-1`, then `-2`, `-3`, … Each branch holds
-   exactly the products the CSV lists for it (`branch` column, in `order`): 3 each, only `productlist-113` has 1.
-2. **Branches are stacked.** `productlist-1` is cut from `main`; every later branch is cut from the previous one
-   (`productlist-N` from `productlist-(N-1)`). This is why the shared files (`index.html`, `sitemap.xml`,
-   the CSV) never conflict.
-3. **The user merges PRs from time to time, in order.** The CSV's `merge_week` (2 branches a week) is a guide, not
-   a deadline. One PR per branch; its base is the previous branch (`productlist-1`'s base is `main`), so each PR
-   shows only its own 3 reviews. When a PR is merged and its branch deleted, GitHub retargets the next PR to `main`.
-   PRs must be merged with **"Create a merge commit"**: squash or rebase merges break the stack.
+How we work (changed 2026-10-29; replaces the old stacked-branch plan):
+1. **Every branch is cut from `main` and only adds its own review folders.** A branch contains nothing but
+   `<slug>-review/index.html` for its products (plus images inside those folders if any).
+2. **Don't touch shared files in review branches:** `index.html`, `sitemap.xml`, `assets/`, the shared site pages
+   (`about/` etc.), `data/` (including the plan CSV) and `CLAUDE.md`/skills. That way no two PRs ever conflict.
+3. **PRs are independent.** Base is always `main`; the user merges them in any order, from time to time.
+4. **`main` stays out of date on purpose.** About once a month the user asks for a "common update" on `main`: add
+   every review folder now on `main` to `index.html` (cards + JSON-LD `ItemList`) and `sitemap.xml`, and set their
+   rows to `published` in the CSV. Until then new reviews are reachable only by URL and their sister reviews.
 
 ### Writing one branch
 ```bash
 git fetch origin
 ```
-- Next branch = one after the highest `productlist-N` on origin (`git branch -r --list 'origin/productlist-*'`).
-  Cut it from that branch: `git switch -c productlist-N origin/productlist-(N-1)` (or `origin/main` for N=1).
-- For each of its 3 products, use the **`write-product-review` skill** (`.claude/skills/write-product-review/`):
-  research, write in the ProDentim format, wire into `index.html` and `sitemap.xml`, pass `check_review.py`, check
-  1920px and 390px. No in-article disclosure box. Every review is positive and scores **4.5–5.0** overall.
-- If `name_check` says "rename before writing", fix `product_name` and `page_slug` in the CSV first (the name is
-  still a marketplace title). Wave C/E rows have a `risk_flag` (disease, adult, aggressive weight-loss claims):
-  keep claims cautious and neutral.
-- Link the 3 reviews in the branch to each other where it's natural (same topic).
-- One commit per review, then set the 3 rows' `status` to `in-pr` in the CSV in the last commit.
-- Push: `git push -u origin productlist-N`. In this batch workflow, pushing the branch is expected (this overrides
-  the skill's "never push"); never push to `main` and never force-push a branch that already has a PR.
-- Give the user the PR link: `https://github.com/stvn1411/a/compare/productlist-(N-1)...productlist-N?expand=1`
-  (for N=1: `main...productlist-1`), and what was checked.
+- Pick the branch: the user names it, or take the lowest `productlist-N` that has no branch on origin yet
+  (`git branch -r --list 'origin/productlist-*'`).
+- `git switch -c productlist-N origin/main`
+- For each product in it (CSV `branch` column, in `order`), use the **`write-product-review` skill**: research,
+  write in the ProDentim format, pass `check_review.py` (standalone mode, the default), check 1920px and 390px. No
+  in-article disclosure box. Every review is positive and scores **4.5–5.0** overall.
+- If `name_check` says "rename before writing", choose a clean product name and slug and tell the user (don't edit
+  the CSV in the branch; it is fixed in the monthly common update). Wave C/E rows have a `risk_flag` (disease, adult,
+  aggressive weight-loss claims): keep claims cautious and neutral.
+- Links from a review may go only to pages that exist on `main` or to the other reviews in the same branch (link the
+  3 to each other where it's natural). Never link to a review that is only in another unmerged branch.
+- One commit per review. Check `git diff --stat origin/main` shows only the new review folders.
+- Push: `git push -u origin productlist-N`. Pushing review branches is expected (this overrides the skill's "never
+  push"); never push to `main` unless the user asks.
+- Give the user the PR link `https://github.com/stvn1411/a/compare/main...productlist-N?expand=1` and what was
+  checked. Merge method doesn't matter now.
 
-### Fixing an older branch
-If a review in `productlist-K` needs a change after later branches exist: commit the fix on `productlist-K`, then
-merge it forward through every later branch (`K+1` from `K`, `K+2` from `K+1`, …) and push each. Don't rebase pushed
-branches.
-
-### After merges
-Branches merged into `main` are live. When asked to sync status: `git fetch origin --prune`, find merged branches
-(`git branch -r --merged origin/main --list 'origin/productlist-*'`, or ones GitHub already deleted), set their rows to
-`published` in the CSV on the next branch being written.
+### Monthly common update (only when the user asks, on `main`)
+`git fetch origin --prune`, then for every `*-review/` folder on `main` that isn't wired yet: add its home page card
+(right category, `Our score: X.X / 5 · Updated <date>`), add it to the home JSON-LD `ItemList` and `sitemap.xml`, and
+set its CSV row to `published` (fix any renamed names/slugs there too). Run `check_review.py --wired <folder>` for
+each; all must pass.
 
 ## Other notes
 - Everything must stay free (no paid tools or plans). GA4 is loaded site-wide by `assets/js/analytics.js`; every new

@@ -1,6 +1,9 @@
 """Check a review page against the TruePicks house format.
 
-Usage (from the repo root): python3 -I .claude/skills/write-product-review/check_review.py <slug>-review
+Usage (from the repo root): python3 -I .claude/skills/write-product-review/check_review.py [--wired] <slug>-review
+
+Default (standalone) mode is for review branches, which must not touch shared files: home page and sitemap
+entries are reported as NOTE only. --wired is for the monthly common update on main and requires them.
 """
 import html
 import json
@@ -15,7 +18,9 @@ REQUIRED_SECTIONS = ["at-a-glance", "what-is-it", "ingredients", "research", "pr
 BANNED = [r"we are not paid by", r"we bought nothing", r"\bmiracle\b", r"\brevolutionary\b",
           r"\b(cures|can cure|will cure)\b", r"\bguaranteed results\b", r"!\s*<"]
 
-folder = sys.argv[1].strip("/")
+args = sys.argv[1:]
+wired = "--wired" in args
+folder = [a for a in args if a != "--wired"][0].strip("/")
 repo = Path.cwd()
 page = repo / folder / "index.html"
 results = []
@@ -91,6 +96,9 @@ check('class="notice"' not in s, "no in-article disclosure box")
 hits = [p for p in BANNED if re.search(p, s, re.I)]
 check(not hits, "no banned phrases / hype", ", ".join(hits))
 
+dead = [h for h in re.findall(r'href="\.\./([a-z0-9-]+-review)/"', s) if not (repo / h / "index.html").exists()]
+check(not dead, "links to other reviews point to pages in this checkout", ", ".join(dead))
+
 site_pages = ["about", "affiliate-disclosure", "privacy-policy", "terms", "contact"]
 missing_links = [p for p in site_pages if f'href="../{p}/"' not in s]
 check(not missing_links, "links to About, Affiliate disclosure, Privacy, Terms, Contact", ", ".join(missing_links))
@@ -98,10 +106,15 @@ missing_pages = [p for p in site_pages if not (repo / p / "index.html").exists()
 check(not missing_pages, "site pages exist", ", ".join(missing_pages))
 
 home = (repo / "index.html").read_text(encoding="utf-8")
-check(f'href="{folder}/"' in home, "linked from home page")
-check(f"{SITE}/{folder}/" in home, "in home page JSON-LD ItemList")
 sitemap = (repo / "sitemap.xml").read_text(encoding="utf-8")
-check(f"<loc>{SITE}/{folder}/</loc>" in sitemap, "listed in sitemap.xml")
+notes = [(f'href="{folder}/"' in home, "linked from home page"),
+         (f"{SITE}/{folder}/" in home, "in home page JSON-LD ItemList"),
+         (f"<loc>{SITE}/{folder}/</loc>" in sitemap, "listed in sitemap.xml")]
+for ok, label in notes:
+    if wired:
+        check(ok, label)
+    else:
+        print(f"NOTE  {label}: {'yes' if ok else 'no'} (added in the monthly common update)")
 
 words = len(text.split())
 check(words >= 1500, "length >= 1500 words", str(words))

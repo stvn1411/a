@@ -1,6 +1,6 @@
 ---
 name: write-product-review
-description: Write a new product review page for the TruePicks health site (health.truepicksreview.com) in the house format set by /prodentim-review/ — researched, always positive with a 4.5–5.0 score, warm and buyer-friendly but reading as a genuine review, fully SEO'd, linked from the home page and sitemap, and checked at 1920px and 390px. Use for "write a review for <product>", "create the next review", "new blog/article for <product>", "add <product> review page", or any new /<product>-review/ page.
+description: Write a new product review page for the TruePicks health site (health.truepicksreview.com) in the house format set by /prodentim-review/ — researched, always positive with a 4.5–5.0 score, warm and buyer-friendly but reading as a genuine review, fully SEO'd as a standalone page (no edits to shared files), and checked at 1920px and 390px. Use for "write a review for <product>", "create the next review", "new blog/article for <product>", "add <product> review page", or any new /<product>-review/ page.
 argument-hint: <product name or ClickBank vendor id>
 ---
 
@@ -71,12 +71,13 @@ The shared site pages live at `/about/`, `/affiliate-disclosure/`, `/privacy-pol
 - JSON-LD `@graph` with `BreadcrumbList`, `Review` (`reviewRating` = overall score, `positiveNotes`/`negativeNotes` = the pros/cons, `itemReviewed` Product with name/brand/category/description/url) and `FAQPage` whose questions and answers match the visible FAQ word for word.
 - Internal links: breadcrumb, category link, "See other reviews".
 
-## 6. Wire it into the site
-- `index.html`: point the product's card at `<slug>-review/` (add a card in the right category if missing), set its status line to `Our score: X.X / 5 · Updated <Mon D, YYYY>`, and make sure the home JSON-LD `ItemList` has the `-review/` URL.
-- `sitemap.xml`: add `<url><loc>https://health.truepicksreview.com/<slug>-review/</loc><lastmod>YYYY-MM-DD</lastmod></url>`.
+## 6. Shared files: leave them alone
+- **Don't edit shared files** (`index.html`, `sitemap.xml`, `assets/`, shared site pages, `data/`). A review branch adds only its own `<slug>-review/` folder, so every PR is independent (see CLAUDE.md).
+- Internal links may go only to pages already on `main` (home, category anchors, site pages, merged reviews) and to the other reviews in the same branch.
+- The home page card, home JSON-LD `ItemList` and `sitemap.xml` entry are added later in the monthly common update on `main`: card status line `Our score: X.X / 5 · Updated <Mon D, YYYY>`, sitemap line `<url><loc>https://health.truepicksreview.com/<slug>-review/</loc><lastmod>YYYY-MM-DD</lastmod></url>`.
 
 ## 7. Verify before saying it's done
-1. Run `python3 -I .claude/skills/write-product-review/check_review.py <slug>-review` from the repo root and fix every FAIL.
+1. Run `python3 -I .claude/skills/write-product-review/check_review.py <slug>-review` from the repo root and fix every FAIL. (Use `--wired` only in the monthly common update, when home page and sitemap entries must exist.)
 2. Screenshot the real `file://` URL at 1920px with headless Chrome (isolated `--user-data-dir`).
 3. Check 390px in the browser pane over a local server (`python3 -m http.server 8765 -d <repo>` in the background, open `http://localhost:8765/<slug>-review/`): `document.documentElement.scrollWidth` must equal `innerWidth`; wide tables may scroll inside `.table-wrap`.
-4. Report what was checked, prices with the date checked, and anything unverified. Don't commit unless the user asks; commit locally only, never push.
+4. Report what was checked, prices with the date checked, and anything unverified. Commit and push follow CLAUDE.md: in a `productlist-N` branch, one commit per review and push the branch; otherwise don't commit unless the user asks.
