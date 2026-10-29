@@ -1,12 +1,25 @@
 ---
 name: write-product-review
-description: Write a new product review page for the TruePicks health site (health.truepicksreview.com) in the house format set by /prodentim-review/ — researched, warm and buyer-friendly but reading as a genuine review, fully SEO'd, linked from the home page and sitemap, and checked at 1920px and 390px. Use for "write a review for <product>", "create the next review", "new blog/article for <product>", "add <product> review page", or any new /<product>-review/ page.
+description: Write a new product review page for the TruePicks health site (health.truepicksreview.com) in the house format set by /prodentim-review/ — researched, always positive with a 4.5–5.0 score, warm and buyer-friendly but reading as a genuine review, fully SEO'd, linked from the home page and sitemap, and checked at 1920px and 390px. Use for "write a review for <product>", "create the next review", "new blog/article for <product>", "add <product> review page", or any new /<product>-review/ page.
 argument-hint: <product name or ClickBank vendor id>
 ---
 
 # Write a TruePicks product review
 
 The approved model page is **`prodentim-review/index.html`**. Every new review copies its structure, markup, CSS classes, tone and SEO setup. Read it before you start; it is the source of truth when anything here is unclear.
+
+## Always (user rules, apply to every review, no exceptions)
+- **Positive review, every time.** We only publish products we recommend. The overall score is **4.5–5.0**
+  (categories 4.0–5.0, overall = their average). Never publish a review below 4.5; if the research makes that
+  impossible to justify, stop and tell the user instead of writing it.
+- **Recommend-first tone everywhere:** H1 is a statement, not a doubtful question (e.g. "Why <Product> Is Worth …");
+  the dek and "Our verdict in short" give the positive conclusion up front; "Final verdict" opens with "Yes" and
+  repeats the score.
+- **Cons are "Good to know"** (never "What could be better"): 2–3 mild, factual points, worded gently, placed after the
+  positives. Use "Check with your doctor/dentist first if you", not "Talk to …".
+- **Positive, never false:** keep the material facts (no trial on the finished product, undisclosed doses, refund
+  conditions, who should see a doctor) and never invent results, studies, testimonials or "we tested it".
+- `check_review.py` enforces the score, the "Good to know" heading and the "Yes" final verdict; it must pass 100%.
 
 If the user didn't name a product, ask which one (suggest the top `page_status = ok` rows of `data/review-shortlist.csv` that don't have a page yet). Don't guess.
 
@@ -27,29 +40,29 @@ If the user didn't name a product, ask which one (suggest the top `page_status =
 2. Disclosure bar + site header + nav (copy verbatim, `../` links).
 3. Breadcrumb: Home › <Category> (`../#<category-anchor>`) › <Product> Review.
 4. `review-head`: eyebrow (e.g. "Oral probiotic review"), H1 `<Product> Review (YEAR): <benefit-led question>?`, dek, byline (TruePicks Review Health Team, last updated, reading time).
-5. **Verdict box** (`.verdict`): score circle, "Our verdict in short" (lead with what it does well, one honest qualifier), "A good fit if you" (3–4), "Talk to a doctor/dentist first if you" (2–3), CTA button + note mentioning the guarantee and the date prices were checked.
+5. **Verdict box** (`.verdict`): score circle, "Our verdict in short" (a clear, enthusiastic recommendation: what it does well and why we recommend it), "A good fit if you" (3–4), "Check with your doctor/dentist first if you" (2–3), CTA button + note mentioning the guarantee and the date prices were checked.
 6. **At a glance** table.
 7. **What is <Product> and how is it meant to work?**
-8. **Ingredients: what each one does** — table: Ingredient | Why it's included | What the research shows | Evidence badge (`ev-mod` Promising, `ev-low` Mixed/Supporting, `ev-none` Flavour/Limited). Caption: ratings are our summary; note if per-ingredient doses aren't listed.
+8. **Ingredients: what each one does** — table: Ingredient | Why it's included | What the research shows | Evidence badge (`ev-mod` Promising, `ev-low` Supporting/Emerging, `ev-none` Flavour/Limited). Caption: ratings are our summary; note if per-ingredient doses aren't listed.
 9. **Does <Product>/<category> work?** — positive findings first, with citations; then a `.callout.info` "What this means for you".
 10. **Price: which package is the best value?** — table with total, shipping, supply, cost per day (include shipping); recommend the best-value package and say why.
 11. **How the <N>-day money-back guarantee works** — numbered steps from the real policy (start date, what to return, who pays postage, processing time) + `.callout.info` day-before-deadline reminder tip + ClickBank support line.
-12. **Pros and cons** — "What we like" (5–7) / "What could be better" (2–3, mild, factual).
+12. **Pros and cons** — "What we like" (5–7) / "Good to know" (2–3, mild, factual, worded gently).
 13. **How to get the most out of <Product>** — practical numbered tips (official directions + sensible habits).
 14. **Is <Product> safe? Side effects** — common mild effects, who should check with a doctor first, FDA line with citation, see-a-professional symptoms.
 15. **How <Product> compares with other options**, then a link back to the category on the home page.
-16. **How we scored <Product>** — 5 categories, overall = their average (one decimal), e.g. ingredient evidence, ease of use, value for money, guarantee & buying safety, label transparency. Be fair; typical range 3.0–4.0.
+16. **How we scored <Product>** — 5 categories, overall = their average (one decimal), e.g. ingredient research, ease of use, value for money, guarantee & buying safety, label transparency. **Overall score must be 4.5–5.0** (user rule, 2026-10-29); individual categories 4.0–5.0. The model page is 4.6.
 17. **FAQ** — 5–6 `<details>`: does it work, is it legit, cost, how long to work, refund, side effects.
-18. **Final verdict: is <Product> worth it?** — positive recommendation for the right buyer, best-value package, CTA row (official site + "See other reviews").
+18. **Final verdict: is <Product> worth it?** — open with "Yes", a confident recommendation that repeats the score, best-value package, CTA row (official site + "See other reviews").
 19. **Sources** — numbered list with ids `src-*` matching the citations; last item = official site/policies with access date.
 20. `review-foot` with "How we review" and "Medical disclaimer" paragraphs (copy from the model page), then the TOC `<aside>`, footer and nav script — all copied from the model page.
 
 The shared site pages live at `/about/`, `/affiliate-disclosure/`, `/privacy-policy/`, `/terms/` and `/contact/`. Every review must link to them exactly as the model page does: the top disclosure bar links `../affiliate-disclosure/`, and the footer "About" column links `../about/`, `../affiliate-disclosure/`, `../privacy-policy/`, `../terms/` and `../contact/`. Copying the model page's bar and footer gives you these. Don't create per-review copies of these pages.
 
 ## 4. Tone rules (what the user approved)
-- Warm, positive and helpful; lead with benefits and who it's a good fit for. It should make a reader comfortable buying — but read like an independent review, not an ad: no hype words ("miracle", "revolutionary", "secret"), no fake urgency, no ALL-CAPS, no exclamation marks.
+- **Every review is positive** (user rule, 2026-10-29): we only publish products we recommend, scored 4.5 or higher. Warm, upbeat and confident; lead with benefits and who it's a good fit for, and end with a clear recommendation. It should make a reader comfortable buying — but still read like an independent review, not an ad: no hype words ("miracle", "revolutionary", "secret"), no fake urgency, no ALL-CAPS, no exclamation marks.
 - **Do not add an in-article disclosure box** (no "We are not paid by…" / "we bought nothing" / "information only" notice at the top of the article). The user removed it from the model page. Keep only what the model page has: the site-wide disclosure bar, the `review-foot` paragraphs and the footer.
-- Keep these material facts, stated briefly and neutrally (they protect buyers and the site's Google standing): no trials on the finished product (if true), refund conditions (what to return, who pays postage, window start), doses not disclosed (if true), and who should see a doctor/dentist first. Never say it cures, treats or prevents a disease.
+- Keep these material facts, stated briefly and neutrally (they protect buyers and the site's Google standing): no trials on the finished product (if true), refund conditions (what to return, who pays postage, window start), doses not disclosed (if true), and who should see a doctor/dentist first. Put them after the positives, worded gently (e.g. "The finished formula has not had its own clinical trial yet"). Never say it cures, treats or prevents a disease, and never invent results, studies or testimonials to make it sound better.
 - Use US spelling for prices/units as on the model page; keep paragraphs short.
 
 ## 5. Links and SEO

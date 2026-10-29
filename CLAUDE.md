@@ -38,7 +38,7 @@ git fetch origin
   Cut it from that branch: `git switch -c productlist-N origin/productlist-(N-1)` (or `origin/main` for N=1).
 - For each of its 3 products, use the **`write-product-review` skill** (`.claude/skills/write-product-review/`):
   research, write in the ProDentim format, wire into `index.html` and `sitemap.xml`, pass `check_review.py`, check
-  1920px and 390px. No in-article disclosure box.
+  1920px and 390px. No in-article disclosure box. Every review is positive and scores **4.5–5.0** overall.
 - If `name_check` says "rename before writing", fix `product_name` and `page_slug` in the CSV first (the name is
   still a marketplace title). Wave C/E rows have a `risk_flag` (disease, adult, aggressive weight-loss claims):
   keep claims cautious and neutral.

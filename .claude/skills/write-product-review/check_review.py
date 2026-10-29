@@ -57,6 +57,11 @@ for t in ("BreadcrumbList", "Review", "FAQPage"):
 review = next((g for g in graph if g.get("@type") == "Review"), {})
 rating = review.get("reviewRating", {}).get("ratingValue")
 check(rating and f'aria-label="Our score: {rating} out of 5"' in s, "schema rating matches score badge", str(rating))
+check(rating and float(rating) >= 4.5, "overall score is 4.5 or higher", str(rating))
+check("What could be better" not in s and "<h3>Good to know</h3>" in s, "cons heading is \"Good to know\"")
+m = re.search(r'id="final-verdict"[^>]*>.*?</h2>\s*<p>(.*?)</p>', s, re.S)
+check(m and re.sub(r"<[^>]+>", "", m.group(1)).startswith("Yes"), "final verdict opens with \"Yes\"")
+check(not re.search(r"<h3>Talk to [^<]* first", s), "uses \"Check with your ... first if you\"")
 rows = re.findall(r"<tr><td>[^<]+</td><td>[^<]+</td><td>([\d.]+) / 5</td></tr>", s)
 if rows:
     avg = round(sum(map(float, rows)) / len(rows), 1)
