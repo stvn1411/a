@@ -74,10 +74,10 @@ The shared site pages live at `/about/`, `/affiliate-disclosure/`, `/privacy-pol
 ## 6. Shared files: leave them alone
 - **Don't edit shared files** (`index.html`, `sitemap.xml`, `assets/`, shared site pages, `data/`). A review branch adds only its own `<slug>-review/` folder, so every PR is independent (see CLAUDE.md).
 - Internal links may go only to pages already on `main` (home, category anchors, site pages, merged reviews) and to the other reviews in the same branch.
-- The home page card, home JSON-LD `ItemList` and `sitemap.xml` entry are added later in the monthly common update on `main`: card status line `Our score: X.X / 5 · Updated <Mon D, YYYY>`, sitemap line `<url><loc>https://health.truepicksreview.com/<slug>-review/</loc><lastmod>YYYY-MM-DD</lastmod></url>`.
+- The home page card, home JSON-LD `ItemList` and `sitemap.xml` entry are added later in the common update on `main` (every 2–3 days): card status line `Our score: X.X / 5 · Updated <Mon D, YYYY>`, sitemap line `<url><loc>https://health.truepicksreview.com/<slug>-review/</loc><lastmod>YYYY-MM-DD</lastmod></url>`.
 
 ## 7. Verify before saying it's done
-1. Run `python3 -I .claude/skills/write-product-review/check_review.py <slug>-review` from the repo root and fix every FAIL. (Use `--wired` only in the monthly common update, when home page and sitemap entries must exist.)
+1. Run `python3 -I .claude/skills/write-product-review/check_review.py <slug>-review` from the repo root and fix every FAIL. (Use `--wired` only in the common update, when home page and sitemap entries must exist.)
 2. Screenshot the real `file://` URL at 1920px with headless Chrome, with its own `--user-data-dir` in this session's scratchpad (never shared with another session). Other sessions may run at the same time, so only stop processes you started.
 3. Check 390px in the browser pane over a local server on a port unique to this batch, 8700 + N for `productlist-N` (`python3 -m http.server <port> -d <this worktree>` in the background, open `http://localhost:<port>/<slug>-review/`): `document.documentElement.scrollWidth` must equal `innerWidth`; wide tables may scroll inside `.table-wrap`.
 4. Report what was checked, prices with the date checked, and anything unverified. Commit and push follow CLAUDE.md: in a `productlist-N` branch, one commit per review and push the branch; otherwise don't commit unless the user asks.

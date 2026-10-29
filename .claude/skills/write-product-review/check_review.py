@@ -3,7 +3,7 @@
 Usage (from the repo root): python3 -I .claude/skills/write-product-review/check_review.py [--wired] <slug>-review
 
 Default (standalone) mode is for review branches, which must not touch shared files: home page and sitemap
-entries are reported as NOTE only. --wired is for the monthly common update on main and requires them.
+entries are reported as NOTE only. --wired is for the common update on main (every 2-3 days) and requires them.
 """
 import html
 import json
@@ -114,7 +114,7 @@ for ok, label in notes:
     if wired:
         check(ok, label)
     else:
-        print(f"NOTE  {label}: {'yes' if ok else 'no'} (added in the monthly common update)")
+        print(f"NOTE  {label}: {'yes' if ok else 'no'} (added in the common update)")
 
 words = len(text.split())
 check(words >= 1500, "length >= 1500 words", str(words))

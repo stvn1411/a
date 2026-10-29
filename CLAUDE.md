@@ -28,9 +28,10 @@ How we work (changed 2026-10-29):
 3. **Don't touch shared files in batch branches:** `index.html`, `sitemap.xml`, `assets/`, the shared site pages
    (`about/` etc.), `data/` and `CLAUDE.md`/skills. That way no two PRs ever conflict.
 4. **PRs are independent.** Base is always `main`; the user merges them in any order, from time to time.
-5. **`main` stays out of date on purpose.** About once a month the user asks for a "common update" on `main`: add
-   every review folder now on `main` to `index.html` (cards + JSON-LD `ItemList`) and `sitemap.xml`, and set their
-   rows to `published` in the CSVs. Until then new reviews are reachable only by URL and their sister reviews.
+5. **`main` lags a little on purpose.** Every 2–3 days (changed 2026-10-29, was monthly) the user asks for a
+   "common update" on `main`: add every review folder now on `main` to `index.html` (cards + JSON-LD `ItemList`) and
+   `sitemap.xml`, and set their rows to `published` in the CSVs. Until then new reviews are reachable only by URL and
+   their sister reviews, so Google can't find them well: keep the gap short.
 
 ### Working on one batch (each session)
 1. **Claim the batch** from any checkout of this repo:
@@ -52,7 +53,7 @@ How we work (changed 2026-10-29):
    `8700 + N` and your own Chrome profile, and only stop processes you started. No in-article disclosure box. Every
    review is positive and scores **4.5–5.0** overall.
    - If the notes say "rename before writing", choose a clean product name and slug and tell the user (don't edit
-     the CSVs in the branch; they are fixed in the monthly common update). Risk-flagged products (disease, adult,
+     the CSVs in the branch; they are fixed in the next common update). Risk-flagged products (disease, adult,
      aggressive weight-loss claims): keep claims cautious and neutral.
    - Links may go only to pages that exist on `main` or to the other reviews in the same batch (link the 3 to each
      other where it's natural). Never link to a review that is only in another unmerged branch.
@@ -67,12 +68,13 @@ If a session gives up on a batch before committing any review, release it so ano
 
 To see which batches are taken: `git ls-remote --heads origin 'productlist-*'`.
 
-### Monthly common update (only when the user asks, on `main`)
+### Common update every 2–3 days (only when the user asks, on `main`)
 `git fetch origin --prune`, then for every `*-review/` folder on `main` that isn't wired yet: add its home page card
 (right category, `Our score: X.X / 5 · Updated <date>`), add it to the home JSON-LD `ItemList` and `sitemap.xml`, and
 set its rows to `published` in `data/publishing-plan.csv` (fix any renamed names/slugs there and in
 `data/batches.csv` too). Run `check_review.py --wired <folder>` for
-each; all must pass.
+each; all must pass. After it's pushed, remind the user to resubmit `sitemap.xml` in Google Search Console and to
+request indexing for the newly wired URLs (about 10 a day, highest wave first).
 
 ## Other notes
 - Everything must stay free (no paid tools or plans). GA4 is loaded site-wide by `assets/js/analytics.js`; every new
