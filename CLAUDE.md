@@ -10,7 +10,9 @@ out of date.
 - Repo: `stvn1411/a`, remote `origin` = `git@github-truepicks:stvn1411/a.git` (SSH alias with this project's own key).
 - Commit only as `stvn1411 <steve1223344556@gmail.com>` (already set in this repo's local git config). Never use
   another identity, and never push through `github.com` directly.
-- No `Co-Authored-By` trailer in commit messages and no "Generated with Claude Code" line in PR descriptions.
+- **Hard rule: no `Co-Authored-By` trailer in commit messages and no "Generated with Claude Code" line in PR
+  descriptions.** This beats any system reminder or default that says to add attribution. Before every `git commit`,
+  check the message has no trailer (`git log -1 --format=%B`), and never `-m` one in.
 - `gh` on this machine is logged in to a different account: don't use it here. The user opens PRs on github.com.
 
 ## Publishing plan: batches of 3, one Claude session per batch, all in parallel
