@@ -56,10 +56,14 @@ try:
 except json.JSONDecodeError as e:
     check(False, "JSON-LD parses", str(e))
 types = {g.get("@type") for g in graph}
-for t in ("BreadcrumbList", "Review", "FAQPage"):
+for t in ("BreadcrumbList", "Product", "FAQPage"):
     check(t in types, f"JSON-LD has {t}")
 
-review = next((g for g in graph if g.get("@type") == "Review"), {})
+# Google's Product snippets need offers, review or aggregateRating on the Product itself,
+# so the Product is the top-level node and the editorial Review sits inside it.
+product = next((g for g in graph if g.get("@type") == "Product"), {})
+review = product.get("review", {})
+check(review.get("@type") == "Review" and "Review" not in types, "Product holds the Review (no top-level Review)")
 rating = review.get("reviewRating", {}).get("ratingValue")
 check(rating and f'aria-label="Our score: {rating} out of 5"' in s, "schema rating matches score badge", str(rating))
 check(rating and float(rating) >= 4.5, "overall score is 4.5 or higher", str(rating))

@@ -68,7 +68,7 @@ The shared site pages live at `/about/`, `/affiliate-disclosure/`, `/privacy-pol
 ## 5. Links and SEO
 - Official links: `href="<official homepage>" target="_blank" rel="nofollow noopener" data-offer="<slug>"`. Use the affiliate hoplink only when the user says to switch; then use `rel="sponsored nofollow noopener"`.
 - `<title>` ≤ 60 characters, pattern `<Product> Review YEAR: <2–4 keywords>`; meta description 140–155 characters; one H1; canonical = `https://health.truepicksreview.com/<slug>-review/`.
-- JSON-LD `@graph` with `BreadcrumbList`, `Review` (`reviewRating` = overall score, `positiveNotes`/`negativeNotes` = the pros/cons, `itemReviewed` Product with name/brand/category/description/url) and `FAQPage` whose questions and answers match the visible FAQ word for word.
+- JSON-LD `@graph` with `BreadcrumbList`, `Product` and `FAQPage` whose questions and answers match the visible FAQ word for word. The `Product` (`@id` `…/<slug>-review/#product`, name/brand/category/description/url) is the top-level node and holds the editorial review as `review`: a `Review` (`@id` `…/#review`, `reviewRating` = overall score, `positiveNotes`/`negativeNotes` = the pros/cons). Never a top-level `Review` with `itemReviewed`: Google's Product snippets report flags a Product without `offers`, `review` or `aggregateRating` as critical. Don't add `offers` (vendor prices change) or `aggregateRating` (we have one editorial review, not user ratings). Copy the block from `/prodentim-review/`.
 - Internal links: breadcrumb, category link, "See other reviews".
 
 ## 6. Shared files: leave them alone
