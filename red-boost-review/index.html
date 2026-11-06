@@ -31,18 +31,44 @@
   <script src="../assets/js/analytics.js" async></script>
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://health.truepicksreview.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Men's Health", "item": "https://health.truepicksreview.com/#mens-health" },
-          { "@type": "ListItem", "position": 3, "name": "Red Boost Review", "item": "https://health.truepicksreview.com/red-boost-review/" }
-        ]
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://health.truepicksreview.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Men's Health",
+          "item": "https://health.truepicksreview.com/#mens-health"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "Red Boost Review",
+          "item": "https://health.truepicksreview.com/red-boost-review/"
+        }
+      ]
+    },
+    {
+      "@type": "Product",
+      "@id": "https://health.truepicksreview.com/red-boost-review/#product",
+      "name": "Red Boost",
+      "brand": {
+        "@type": "Brand",
+        "name": "Red Boost"
       },
-      {
+      "category": "Men's health dietary supplement",
+      "description": "A powder dietary supplement sold through ClickBank, listing icariin, Tongkat Ali, fenugreek, citrulline and nettle root, with a 180-day money-back guarantee.",
+      "url": "https://mymorningtonic.com",
+      "review": {
         "@type": "Review",
         "@id": "https://health.truepicksreview.com/red-boost-review/#review",
         "name": "Red Boost Review 2026: Ingredients, Price & Refund",
@@ -50,74 +76,128 @@
         "datePublished": "2026-10-29",
         "dateModified": "2026-10-29",
         "inLanguage": "en-US",
-        "author": { "@type": "Organization", "name": "TruePicks Review Health Team", "url": "https://health.truepicksreview.com/" },
-        "publisher": { "@id": "https://health.truepicksreview.com/#organization" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "4.5", "bestRating": "5", "worstRating": "1" },
+        "author": {
+          "@type": "Organization",
+          "name": "TruePicks Review Health Team",
+          "url": "https://health.truepicksreview.com/"
+        },
+        "publisher": {
+          "@id": "https://health.truepicksreview.com/#organization"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "4.5",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
         "reviewBody": "Red Boost is a simple once-a-day men's wellness powder built around five well-known ingredients: icariin, Tongkat Ali, fenugreek, citrulline and nettle root. Several of them have been looked at in small human studies, the price per day drops sharply on the bigger packages, and the 180-day money-back guarantee makes it easy to try with little risk.",
         "positiveNotes": {
           "@type": "ItemList",
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Five recognizable ingredients, several studied in people" },
-            { "@type": "ListItem", "position": 2, "name": "Simple daily routine: one serving a day" },
-            { "@type": "ListItem", "position": 3, "name": "180-day money-back guarantee" },
-            { "@type": "ListItem", "position": 4, "name": "One-time payment with no subscription" },
-            { "@type": "ListItem", "position": 5, "name": "Cost per day falls to about $1.30 on the 6-bottle package" }
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Five recognizable ingredients, several studied in people"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Simple daily routine: one serving a day"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "180-day money-back guarantee"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "One-time payment with no subscription"
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "name": "Cost per day falls to about $1.30 on the 6-bottle package"
+            }
           ]
         },
         "negativeNotes": {
           "@type": "ItemList",
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Doses of each ingredient are not listed in the page text" },
-            { "@type": "ListItem", "position": 2, "name": "The finished formula has not had its own clinical trial yet" },
-            { "@type": "ListItem", "position": 3, "name": "Return postage on refunds is paid by the buyer" }
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Doses of each ingredient are not listed in the page text"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "The finished formula has not had its own clinical trial yet"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Return postage on refunds is paid by the buyer"
+            }
           ]
-        },
-        "itemReviewed": {
-          "@type": "Product",
-          "name": "Red Boost",
-          "brand": { "@type": "Brand", "name": "Red Boost" },
-          "category": "Men's health dietary supplement",
-          "description": "A powder dietary supplement sold through ClickBank, listing icariin, Tongkat Ali, fenugreek, citrulline and nettle root, with a 180-day money-back guarantee.",
-          "url": "https://mymorningtonic.com"
         }
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Does Red Boost work?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Red Boost combines five ingredients that have each been looked at in research, including small human studies of Tongkat Ali, fenugreek and citrulline. The finished formula has not had its own clinical trial yet, the doses are not listed in the page text, and results vary from person to person." }
-          },
-          {
-            "@type": "Question",
-            "name": "Is Red Boost legit?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. Red Boost is a real product sold through ClickBank, a large US online retailer, with a one-time payment, published support emails and a 180-day money-back guarantee." }
-          },
-          {
-            "@type": "Question",
-            "name": "How much does Red Boost cost?",
-            "acceptedAnswer": { "@type": "Answer", "text": "On the official site at the time of our review: 1 bottle costs $69, 3 bottles cost $177 and 6 bottles cost $234, each bottle being a 30-day supply. Shipping is listed as an extra on the smaller packages and described as free on 3- and 6-bottle orders in the site's FAQ, so confirm it at checkout. Before shipping, that is about $2.30, $1.97 and $1.30 per day." }
-          },
-          {
-            "@type": "Question",
-            "name": "How long does Red Boost take to work?",
-            "acceptedAnswer": { "@type": "Answer", "text": "The official page does not give a timeline. The studies on its ingredients ran from about 4 weeks to 12 weeks, so a few weeks of daily use is a sensible trial period." }
-          },
-          {
-            "@type": "Question",
-            "name": "How do I get a refund on Red Boost?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Within 180 days of the date your order ships, email the seller with 'Refund Request' in the subject line, get confirmation from an agent, return the bottles and email the tracking ID. Return postage is paid by the customer, and refunds usually take 5 to 10 days to appear on your statement." }
-          },
-          {
-            "@type": "Question",
-            "name": "Does Red Boost have side effects?",
-            "acceptedAnswer": { "@type": "Answer", "text": "The official page does not list side effects. Herbal ingredients can cause mild stomach upset in some people, and men who take prescription medicine, especially for blood pressure, heart or prostate conditions, should ask a doctor before starting." }
-          }
-        ]
       }
-    ]
-  }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does Red Boost work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Red Boost combines five ingredients that have each been looked at in research, including small human studies of Tongkat Ali, fenugreek and citrulline. The finished formula has not had its own clinical trial yet, the doses are not listed in the page text, and results vary from person to person."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is Red Boost legit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. Red Boost is a real product sold through ClickBank, a large US online retailer, with a one-time payment, published support emails and a 180-day money-back guarantee."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does Red Boost cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On the official site at the time of our review: 1 bottle costs $69, 3 bottles cost $177 and 6 bottles cost $234, each bottle being a 30-day supply. Shipping is listed as an extra on the smaller packages and described as free on 3- and 6-bottle orders in the site's FAQ, so confirm it at checkout. Before shipping, that is about $2.30, $1.97 and $1.30 per day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does Red Boost take to work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The official page does not give a timeline. The studies on its ingredients ran from about 4 weeks to 12 weeks, so a few weeks of daily use is a sensible trial period."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I get a refund on Red Boost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Within 180 days of the date your order ships, email the seller with 'Refund Request' in the subject line, get confirmation from an agent, return the bottles and email the tracking ID. Return postage is paid by the customer, and refunds usually take 5 to 10 days to appear on your statement."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does Red Boost have side effects?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The official page does not list side effects. Herbal ingredients can cause mild stomach upset in some people, and men who take prescription medicine, especially for blood pressure, heart or prostate conditions, should ask a doctor before starting."
+          }
+        }
+      ]
+    }
+  ]
+}
   </script>
 </head>
 <body>
