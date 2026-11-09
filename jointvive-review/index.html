@@ -31,18 +31,44 @@
   <script src="../assets/js/analytics.js" async></script>
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://health.truepicksreview.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Joint & Pain Relief", "item": "https://health.truepicksreview.com/#reviews" },
-          { "@type": "ListItem", "position": 3, "name": "JointVive Review", "item": "https://health.truepicksreview.com/jointvive-review/" }
-        ]
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://health.truepicksreview.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Joint & Pain Relief",
+          "item": "https://health.truepicksreview.com/#reviews"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "JointVive Review",
+          "item": "https://health.truepicksreview.com/jointvive-review/"
+        }
+      ]
+    },
+    {
+      "@type": "Product",
+      "@id": "https://health.truepicksreview.com/jointvive-review/#product",
+      "name": "JointVive",
+      "brand": {
+        "@type": "Brand",
+        "name": "JointVive"
       },
-      {
+      "category": "Joint support dietary supplement (liquid drops)",
+      "description": "A once-daily liquid drop supplement sold through ClickBank, containing pine bark extract, tamarind, chlorella, ginkgo biloba, spirulina, lion's mane mushroom, bacopa monnieri, moringa and neem.",
+      "url": "https://jointvive.com/",
+      "review": {
         "@type": "Review",
         "@id": "https://health.truepicksreview.com/jointvive-review/#review",
         "name": "JointVive Review 2026: Ingredients, Price & Refund",
@@ -50,75 +76,133 @@
         "datePublished": "2026-10-29",
         "dateModified": "2026-10-29",
         "inLanguage": "en-US",
-        "author": { "@type": "Organization", "name": "TruePicks Review Health Team", "url": "https://health.truepicksreview.com/" },
-        "publisher": { "@id": "https://health.truepicksreview.com/#organization" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "4.5", "bestRating": "5", "worstRating": "1" },
+        "author": {
+          "@type": "Organization",
+          "name": "TruePicks Review Health Team",
+          "url": "https://health.truepicksreview.com/"
+        },
+        "publisher": {
+          "@id": "https://health.truepicksreview.com/#organization"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "4.5",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
         "reviewBody": "JointVive is one of the easiest ways to add a joint-comfort routine to your day: one drop, once a day, on its own or in a drink. Its plant-based formula includes pine bark extract, which has been studied in knee osteoarthritis, alongside tamarind and several other botanicals. The sales page keeps its claims modest, the price per day is very reasonable on the 6-bottle package, and a 365-day money-back guarantee makes it low risk to try.",
         "positiveNotes": {
           "@type": "ItemList",
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "One drop a day, alone or in a drink" },
-            { "@type": "ListItem", "position": 2, "name": "Includes pine bark extract, which has been studied in knee osteoarthritis" },
-            { "@type": "ListItem", "position": 3, "name": "Plant-based, non-GMO and stimulant-free, per the manufacturer" },
-            { "@type": "ListItem", "position": 4, "name": "Modest, non-hyped claims on the sales page" },
-            { "@type": "ListItem", "position": 5, "name": "About $0.97 a day on the 6-bottle package" },
-            { "@type": "ListItem", "position": 6, "name": "365-day money-back guarantee" }
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "One drop a day, alone or in a drink"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Includes pine bark extract, which has been studied in knee osteoarthritis"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Plant-based, non-GMO and stimulant-free, per the manufacturer"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Modest, non-hyped claims on the sales page"
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "name": "About $0.97 a day on the 6-bottle package"
+            },
+            {
+              "@type": "ListItem",
+              "position": 6,
+              "name": "365-day money-back guarantee"
+            }
           ]
         },
         "negativeNotes": {
           "@type": "ItemList",
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "The label lists nine ingredients without individual amounts" },
-            { "@type": "ListItem", "position": 2, "name": "The finished formula has not had its own clinical trial yet" },
-            { "@type": "ListItem", "position": 3, "name": "Detailed refund steps are not published on the sales page" }
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "The label lists nine ingredients without individual amounts"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "The finished formula has not had its own clinical trial yet"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Detailed refund steps are not published on the sales page"
+            }
           ]
-        },
-        "itemReviewed": {
-          "@type": "Product",
-          "name": "JointVive",
-          "brand": { "@type": "Brand", "name": "JointVive" },
-          "category": "Joint support dietary supplement (liquid drops)",
-          "description": "A once-daily liquid drop supplement sold through ClickBank, containing pine bark extract, tamarind, chlorella, ginkgo biloba, spirulina, lion's mane mushroom, bacopa monnieri, moringa and neem.",
-          "url": "https://jointvive.com/"
         }
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Does JointVive work?",
-            "acceptedAnswer": { "@type": "Answer", "text": "JointVive is designed to support joint comfort and mobility. One of its ingredients, pine bark extract, has been studied in knee osteoarthritis, while research on several of the other botanicals is more limited. The finished formula has not had its own clinical trial yet, and results vary from person to person." }
-          },
-          {
-            "@type": "Question",
-            "name": "Is JointVive legit?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. JointVive is a real product sold through ClickBank, a large US online retailer, with published shipping and terms pages and a 365-day money-back guarantee." }
-          },
-          {
-            "@type": "Question",
-            "name": "How much does JointVive cost?",
-            "acceptedAnswer": { "@type": "Answer", "text": "On the official site at the time of our review: 1 bottle is $69, 3 bottles are $177 and 6 bottles are $174 with free shipping. Each bottle is described as a one-month supply, so the 6-bottle package works out to about $0.97 per day." }
-          },
-          {
-            "@type": "Question",
-            "name": "How do I take JointVive?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Shake the bottle well and take one drop a day, preferably in the morning, either directly or mixed into tea, coffee, juice or another drink." }
-          },
-          {
-            "@type": "Question",
-            "name": "How do I get a refund on JointVive?",
-            "acceptedAnswer": { "@type": "Answer", "text": "JointVive offers a 365-day money-back guarantee. The sales page does not spell out the return steps, so contact the support team or ClickBank before sending anything back and keep your order number and packing slip." }
-          },
-          {
-            "@type": "Question",
-            "name": "Does JointVive have side effects?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Herbal supplements are usually well tolerated, with mild digestive upset the most common complaint. People who have a medical condition, take prescription medication, or are pregnant or nursing should ask a doctor first." }
-          }
-        ]
       }
-    ]
-  }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does JointVive work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "JointVive is designed to support joint comfort and mobility. One of its ingredients, pine bark extract, has been studied in knee osteoarthritis, while research on several of the other botanicals is more limited. The finished formula has not had its own clinical trial yet, and results vary from person to person."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is JointVive legit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. JointVive is a real product sold through ClickBank, a large US online retailer, with published shipping and terms pages and a 365-day money-back guarantee."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does JointVive cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On the official site at the time of our review: 1 bottle is $69, 3 bottles are $177 and 6 bottles are $174 with free shipping. Each bottle is described as a one-month supply, so the 6-bottle package works out to about $0.97 per day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I take JointVive?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Shake the bottle well and take one drop a day, preferably in the morning, either directly or mixed into tea, coffee, juice or another drink."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I get a refund on JointVive?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "JointVive offers a 365-day money-back guarantee. The sales page does not spell out the return steps, so contact the support team or ClickBank before sending anything back and keep your order number and packing slip."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does JointVive have side effects?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Herbal supplements are usually well tolerated, with mild digestive upset the most common complaint. People who have a medical condition, take prescription medication, or are pregnant or nursing should ask a doctor first."
+          }
+        }
+      ]
+    }
+  ]
+}
   </script>
 </head>
 <body>

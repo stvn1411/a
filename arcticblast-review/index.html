@@ -31,18 +31,44 @@
   <script src="../assets/js/analytics.js" async></script>
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://health.truepicksreview.com/" },
-          { "@type": "ListItem", "position": 2, "name": "Joint & Pain Relief", "item": "https://health.truepicksreview.com/#reviews" },
-          { "@type": "ListItem", "position": 3, "name": "ArcticBlast Review", "item": "https://health.truepicksreview.com/arcticblast-review/" }
-        ]
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://health.truepicksreview.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Joint & Pain Relief",
+          "item": "https://health.truepicksreview.com/#reviews"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "ArcticBlast Review",
+          "item": "https://health.truepicksreview.com/arcticblast-review/"
+        }
+      ]
+    },
+    {
+      "@type": "Product",
+      "@id": "https://health.truepicksreview.com/arcticblast-review/#product",
+      "name": "ArcticBlast",
+      "brand": {
+        "@type": "Brand",
+        "name": "ArcticBlast"
       },
-      {
+      "category": "Cooling topical pain-relief drops",
+      "description": "A cooling liquid in drop form containing menthol, camphor, aloe, arnica flower extract, wintergreen oil, St. John's Wort oil and calendula extract, sold through ClickBank.",
+      "url": "https://getarcticblast.com/",
+      "review": {
         "@type": "Review",
         "@id": "https://health.truepicksreview.com/arcticblast-review/#review",
         "name": "ArcticBlast Review 2026: Ingredients, Price & Refund",
@@ -50,75 +76,133 @@
         "datePublished": "2026-10-29",
         "dateModified": "2026-10-29",
         "inLanguage": "en-US",
-        "author": { "@type": "Organization", "name": "TruePicks Review Health Team", "url": "https://health.truepicksreview.com/" },
-        "publisher": { "@id": "https://health.truepicksreview.com/#organization" },
-        "reviewRating": { "@type": "Rating", "ratingValue": "4.5", "bestRating": "5", "worstRating": "1" },
+        "author": {
+          "@type": "Organization",
+          "name": "TruePicks Review Health Team",
+          "url": "https://health.truepicksreview.com/"
+        },
+        "publisher": {
+          "@id": "https://health.truepicksreview.com/#organization"
+        },
+        "reviewRating": {
+          "@type": "Rating",
+          "ratingValue": "4.5",
+          "bestRating": "5",
+          "worstRating": "1"
+        },
         "reviewBody": "ArcticBlast is an easy, pleasant way to give everyday muscle and joint aches a cooling lift: a few drops rubbed in where it feels sore. It is built on menthol, camphor and wintergreen oil, long-used counterirritant ingredients, with aloe, arnica and calendula for a soothing touch. Free US shipping and a 365-day money-back guarantee make it a low-risk choice.",
         "positiveNotes": {
           "@type": "ItemList",
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "Built on menthol, camphor and wintergreen oil, classic counterirritant ingredients" },
-            { "@type": "ListItem", "position": 2, "name": "Easy drops you apply and massage in" },
-            { "@type": "ListItem", "position": 3, "name": "Soothing aloe, arnica and calendula in the formula" },
-            { "@type": "ListItem", "position": 4, "name": "Free US shipping on every package" },
-            { "@type": "ListItem", "position": 5, "name": "Three free e-book bonuses" },
-            { "@type": "ListItem", "position": 6, "name": "365-day money-back guarantee" }
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Built on menthol, camphor and wintergreen oil, classic counterirritant ingredients"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Easy drops you apply and massage in"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Soothing aloe, arnica and calendula in the formula"
+            },
+            {
+              "@type": "ListItem",
+              "position": 4,
+              "name": "Free US shipping on every package"
+            },
+            {
+              "@type": "ListItem",
+              "position": 5,
+              "name": "Three free e-book bonuses"
+            },
+            {
+              "@type": "ListItem",
+              "position": 6,
+              "name": "365-day money-back guarantee"
+            }
           ]
         },
         "negativeNotes": {
           "@type": "ItemList",
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "name": "The label does not list the amount of each ingredient" },
-            { "@type": "ListItem", "position": 2, "name": "The finished formula has not had its own clinical trial" },
-            { "@type": "ListItem", "position": 3, "name": "Detailed return steps are not published on the sales page" }
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "The label does not list the amount of each ingredient"
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "The finished formula has not had its own clinical trial"
+            },
+            {
+              "@type": "ListItem",
+              "position": 3,
+              "name": "Detailed return steps are not published on the sales page"
+            }
           ]
-        },
-        "itemReviewed": {
-          "@type": "Product",
-          "name": "ArcticBlast",
-          "brand": { "@type": "Brand", "name": "ArcticBlast" },
-          "category": "Cooling topical pain-relief drops",
-          "description": "A cooling liquid in drop form containing menthol, camphor, aloe, arnica flower extract, wintergreen oil, St. John's Wort oil and calendula extract, sold through ClickBank.",
-          "url": "https://getarcticblast.com/"
         }
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Does ArcticBlast work?",
-            "acceptedAnswer": { "@type": "Answer", "text": "ArcticBlast is built on menthol, camphor and wintergreen oil, which work as counterirritants: a cooling-then-warming feeling that takes the focus off minor muscle and joint aches. Trials of menthol-based products have shown pain relief, and the finished formula has not had its own clinical trial. Results vary from person to person." }
-          },
-          {
-            "@type": "Question",
-            "name": "Is ArcticBlast legit?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Yes. ArcticBlast is a real product sold through ClickBank, a large US online retailer, by Nutriomo Labs with a published business address, support contacts and a 365-day money-back guarantee." }
-          },
-          {
-            "@type": "Question",
-            "name": "How much does ArcticBlast cost?",
-            "acceptedAnswer": { "@type": "Answer", "text": "On the official site at the time of our review: 1 bottle costs $59.95, 3 bottles cost $139.95 and 6 bottles cost $199.95, all with free US shipping. That works out to about $59.95, $46.65 and $33.33 per bottle." }
-          },
-          {
-            "@type": "Question",
-            "name": "How do I use ArcticBlast?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Apply a few drops to the sore area and massage in gently, at least twice a day, in the morning and before bed, or as needed. The sales page gives both 3 to 4 drops and 2 to 3 drops, so starting with the smaller amount is sensible. Wash your hands afterwards and keep it out of your eyes." }
-          },
-          {
-            "@type": "Question",
-            "name": "How do I get a refund on ArcticBlast?",
-            "acceptedAnswer": { "@type": "Answer", "text": "ArcticBlast offers a 365-day money-back guarantee. Contact the support team, return your empty bottles and you can get back 100% of your purchase price. The sales page does not give detailed return steps, so ask support before sending anything and keep your order number." }
-          },
-          {
-            "@type": "Question",
-            "name": "Does ArcticBlast have side effects?",
-            "acceptedAnswer": { "@type": "Answer", "text": "Cooling and warming products can cause mild skin redness or irritation in some people. Stop using it if irritation develops, and check with a doctor first if you have a skin condition, are allergic to any ingredient, or are pregnant or nursing. It is not for anyone under 18." }
-          }
-        ]
       }
-    ]
-  }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does ArcticBlast work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ArcticBlast is built on menthol, camphor and wintergreen oil, which work as counterirritants: a cooling-then-warming feeling that takes the focus off minor muscle and joint aches. Trials of menthol-based products have shown pain relief, and the finished formula has not had its own clinical trial. Results vary from person to person."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is ArcticBlast legit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. ArcticBlast is a real product sold through ClickBank, a large US online retailer, by Nutriomo Labs with a published business address, support contacts and a 365-day money-back guarantee."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does ArcticBlast cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On the official site at the time of our review: 1 bottle costs $59.95, 3 bottles cost $139.95 and 6 bottles cost $199.95, all with free US shipping. That works out to about $59.95, $46.65 and $33.33 per bottle."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I use ArcticBlast?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Apply a few drops to the sore area and massage in gently, at least twice a day, in the morning and before bed, or as needed. The sales page gives both 3 to 4 drops and 2 to 3 drops, so starting with the smaller amount is sensible. Wash your hands afterwards and keep it out of your eyes."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I get a refund on ArcticBlast?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ArcticBlast offers a 365-day money-back guarantee. Contact the support team, return your empty bottles and you can get back 100% of your purchase price. The sales page does not give detailed return steps, so ask support before sending anything and keep your order number."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does ArcticBlast have side effects?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Cooling and warming products can cause mild skin redness or irritation in some people. Stop using it if irritation develops, and check with a doctor first if you have a skin condition, are allergic to any ingredient, or are pregnant or nursing. It is not for anyone under 18."
+          }
+        }
+      ]
+    }
+  ]
+}
   </script>
 </head>
 <body>

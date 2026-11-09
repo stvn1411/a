@@ -31,33 +31,44 @@
   <script src="../assets/js/analytics.js" async></script>
 
   <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@graph": [
-      {
-        "@type": "BreadcrumbList",
-        "itemListElement": [
-          {
-            "@type": "ListItem",
-            "position": 1,
-            "name": "Home",
-            "item": "https://health.truepicksreview.com/"
-          },
-          {
-            "@type": "ListItem",
-            "position": 2,
-            "name": "Oral & Dental Health",
-            "item": "https://health.truepicksreview.com/#oral-health"
-          },
-          {
-            "@type": "ListItem",
-            "position": 3,
-            "name": "ProvaDent Review",
-            "item": "https://health.truepicksreview.com/provadent-review/"
-          }
-        ]
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "BreadcrumbList",
+      "itemListElement": [
+        {
+          "@type": "ListItem",
+          "position": 1,
+          "name": "Home",
+          "item": "https://health.truepicksreview.com/"
+        },
+        {
+          "@type": "ListItem",
+          "position": 2,
+          "name": "Oral & Dental Health",
+          "item": "https://health.truepicksreview.com/#oral-health"
+        },
+        {
+          "@type": "ListItem",
+          "position": 3,
+          "name": "ProvaDent Review",
+          "item": "https://health.truepicksreview.com/provadent-review/"
+        }
+      ]
+    },
+    {
+      "@type": "Product",
+      "@id": "https://health.truepicksreview.com/provadent-review/#product",
+      "name": "ProvaDent",
+      "brand": {
+        "@type": "Brand",
+        "name": "ProvaDent"
       },
-      {
+      "category": "Oral probiotic dietary supplement",
+      "description": "A chewable oral-health supplement sold through ClickBank, containing organic xylitol, a proprietary BioFresh Clean Complex, cranberry extract, purple carrot powder and four probiotic strains.",
+      "url": "https://dentalsugarhack.com/",
+      "review": {
         "@type": "Review",
         "@id": "https://health.truepicksreview.com/provadent-review/#review",
         "name": "ProvaDent Review 2026: Ingredients, Price & Refund",
@@ -129,74 +140,64 @@
               "name": "Refund return steps aren't spelled out on the sales page"
             }
           ]
-        },
-        "itemReviewed": {
-          "@type": "Product",
-          "name": "ProvaDent",
-          "brand": {
-            "@type": "Brand",
-            "name": "ProvaDent"
-          },
-          "category": "Oral probiotic dietary supplement",
-          "description": "A chewable oral-health supplement sold through ClickBank, containing organic xylitol, a proprietary BioFresh Clean Complex, cranberry extract, purple carrot powder and four probiotic strains.",
-          "url": "https://dentalsugarhack.com/"
         }
-      },
-      {
-        "@type": "FAQPage",
-        "mainEntity": [
-          {
-            "@type": "Question",
-            "name": "Does ProvaDent work?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "ProvaDent combines four probiotic strains with xylitol and cranberry, and research on oral probiotics shows real improvements in gum bleeding and gum inflammation. Most people get the best results by taking it daily for a few weeks alongside brushing, flossing and dental check-ups. The finished formula has not published its own clinical trial, and results vary from person to person."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Is ProvaDent legit?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Yes. ProvaDent is a real product sold through ClickBank, a large US online retailer, with a one-time payment, a published support email and phone number, and a 60-day money-back guarantee."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How much does ProvaDent cost?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "On the official page at the time of our review: 1 bottle costs $69, 3 bottles cost $177 and 6 bottles cost $294, with free US shipping on the 3- and 6-bottle packages. Each bottle is listed as a 30-day supply, so the cost is roughly $1.63 to $2.30 per day."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How long does ProvaDent take to work?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "The official page doesn't give a timeline. Many oral probiotic studies measured changes after 4 to 12 weeks of daily use."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "How do I get a refund on ProvaDent?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Within 60 days, contact customer support at support@getprovadent.com or 1 (814) 885 4823 (Monday to Friday) and ask for a refund. The sales page doesn't list the return steps, so ask support how to return the bottles."
-            }
-          },
-          {
-            "@type": "Question",
-            "name": "Does ProvaDent have side effects?",
-            "acceptedAnswer": {
-              "@type": "Answer",
-              "text": "Probiotics and xylitol are usually well tolerated, with mild digestive changes the most common complaint. People who are immunocompromised, pregnant, nursing or taking medication should ask a doctor first."
-            }
-          }
-        ]
       }
-    ]
-  }
+    },
+    {
+      "@type": "FAQPage",
+      "mainEntity": [
+        {
+          "@type": "Question",
+          "name": "Does ProvaDent work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "ProvaDent combines four probiotic strains with xylitol and cranberry, and research on oral probiotics shows real improvements in gum bleeding and gum inflammation. Most people get the best results by taking it daily for a few weeks alongside brushing, flossing and dental check-ups. The finished formula has not published its own clinical trial, and results vary from person to person."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Is ProvaDent legit?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Yes. ProvaDent is a real product sold through ClickBank, a large US online retailer, with a one-time payment, a published support email and phone number, and a 60-day money-back guarantee."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How much does ProvaDent cost?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "On the official page at the time of our review: 1 bottle costs $69, 3 bottles cost $177 and 6 bottles cost $294, with free US shipping on the 3- and 6-bottle packages. Each bottle is listed as a 30-day supply, so the cost is roughly $1.63 to $2.30 per day."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How long does ProvaDent take to work?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "The official page doesn't give a timeline. Many oral probiotic studies measured changes after 4 to 12 weeks of daily use."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "How do I get a refund on ProvaDent?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Within 60 days, contact customer support at support@getprovadent.com or 1 (814) 885 4823 (Monday to Friday) and ask for a refund. The sales page doesn't list the return steps, so ask support how to return the bottles."
+          }
+        },
+        {
+          "@type": "Question",
+          "name": "Does ProvaDent have side effects?",
+          "acceptedAnswer": {
+            "@type": "Answer",
+            "text": "Probiotics and xylitol are usually well tolerated, with mild digestive changes the most common complaint. People who are immunocompromised, pregnant, nursing or taking medication should ask a doctor first."
+          }
+        }
+      ]
+    }
+  ]
+}
   </script>
 </head>
 <body>
